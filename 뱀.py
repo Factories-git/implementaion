@@ -1,12 +1,16 @@
 from collections import deque
 
+
 def isgameover_wall():
     if snake[0][1] >= n or snake[0][0] >= n or snake[0][1] < 0 or snake[0][0] < 0:
         return True
 
+
 def isgameover_snake():
     if snake.count(snake[0]) >= 2:
         return True
+
+
 def change_direction(c):
     global now_dir
     if c == 'L':
@@ -28,23 +32,24 @@ def change_direction(c):
         else:
             now_dir = 1
 
+
 direction = [0] * 10000
 n = int(input())
 board = [[0] * n for i in range(n)]
 k = int(input())
 
 for i in range(k):
-    r,c = map(int, input().split())
-    board[r-1][c-1] = 1
+    r, c = map(int, input().split())
+    board[r - 1][c - 1] = 1
 
-snake = deque([[0,0]])
+snake = deque([[0, 0]])
 
 time = 1
 
 l = int(input())
 for i in range(l):
-    x,c = map(str, input().split())
-    direction[int(x)-1] = c
+    x, c = map(str, input().split())
+    direction[int(x) - 1] = c
 
 now_dir = 1
 while True:
@@ -65,8 +70,8 @@ while True:
     else:
         board[snake[0][0]][snake[0][1]] = 0
 
-    if direction[time-1] != 0:
-        change_direction(direction[time-1])
+    if direction[time - 1] != 0:
+        change_direction(direction[time - 1])
 
     time += 1
 
