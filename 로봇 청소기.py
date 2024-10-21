@@ -8,6 +8,8 @@ cleaner = [r, c]
 def is_clean(r, c):
     if room[r + 1][c] == room[r - 1][c] == room[r][c + 1] == room[r][c - 1] == 2:
         return True
+    if (room[r+1][c] == 1 and room[r - 1][c] == room[r][c + 1] == room[r][c - 1] == 2) or (room[r - 1][c] == 1 and room[r + 1][c] == room[r][c + 1] == room[r][c - 1] == 2)or (room[r][c+1] == 1 and room[r + 1][c] == room[r - 1][c] == room[r][c - 1] == 2) or (room[r-1][c] == 1 and room[r + 1][c] == room[r][c + 1] == room[r][c - 1] == 2):
+        return True
     return False
 
 
@@ -36,9 +38,9 @@ while True:
     if room[cleaner[0]][cleaner[1]] == 0:
         time += 1
         room[cleaner[0]][cleaner[1]] = 2
-    if is_clean(r, c):
-        if room[cleaner[0]-1][cleaner[1]] != 1:
-            cleaner[0] -= 1
+    if is_clean(cleaner[0], cleaner[1]) or is_wall(cleaner[0], cleaner[1]):
+        if room[cleaner[0]+1][cleaner[1]] != 1:
+            cleaner[0] += 1
         else:
             break
     else:
@@ -49,10 +51,11 @@ while True:
         elif dir == 1:
             if room[cleaner[0]][cleaner[1]+1] == 0:
                 cleaner[1] += 1
+
         elif dir == 2:
             if room[cleaner[0] - 1][cleaner[1]] == 0:
                 cleaner[0] -= 1
         else:
             if room[cleaner[0]][cleaner[1] - 1] == 0:
                 cleaner[1] -= 1
-        print(time ,dir)
+        print(time, cleaner , '\n', room[cleaner[0]-1], '\n', room[cleaner[0]], '\n', room[cleaner[0]+1])
