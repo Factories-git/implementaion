@@ -56,8 +56,8 @@ while True:
             if room[cleaner[0]][cleaner[1] - 1] == 0:
                 cleaner[1] -= 1
     else:
-        if room[cleaner[0]+1][cleaner[1]] != 1:
-            cleaner[0] += 1
+        if d == 0:
+            if room[cleaner[0] + 1]
         else:
             break
 
