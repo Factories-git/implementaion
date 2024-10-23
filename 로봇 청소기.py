@@ -43,22 +43,38 @@ while True:
     if is_clean(cleaner[0], cleaner[1]):
         change_dir()
         if d == 0:
-            if room[cleaner[0]+1][cleaner[1]] == 0:
-                cleaner[0] += 1
+            if room[cleaner[0]-1][cleaner[1]] == 0:
+                cleaner[0] -= 1
         elif d == 1:
             if room[cleaner[0]][cleaner[1]+1] == 0:
                 cleaner[1] += 1
 
         elif d == 2:
-            if room[cleaner[0] - 1][cleaner[1]] == 0:
-                cleaner[0] -= 1
+            if room[cleaner[0] + 1][cleaner[1]] == 0:
+                cleaner[0] += 1
         else:
             if room[cleaner[0]][cleaner[1] - 1] == 0:
                 cleaner[1] -= 1
     else:
         if d == 0:
-            if room[cleaner[0] + 1]
+            if room[cleaner[0] + 1][cleaner[1]] != 1:
+                cleaner[0] += 1
+            else:
+                break
+        elif d == 1:
+            if room[cleaner[0]][cleaner[1] - 1] != 1:
+                cleaner[1] -= 1
+            else:
+                break
+        elif d == 2:
+            if room[cleaner[0] - 1][cleaner[1]] != 1:
+                cleaner[0] -= 1
+            else:
+                break
         else:
-            break
+            if room[cleaner[0]][cleaner[1]+1] != 1:
+                cleaner[1] += 1
+            else:
+                break
 
 print(time)
